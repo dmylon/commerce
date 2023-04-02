@@ -20,5 +20,7 @@ If the user is interested about a product, they are able to view some details pr
 
 Finally the user is able to create their own listings and control the auction's closing time. When an auction is closed, the winner is notified when visiting the product's page.
 
+### How to run
+
 
 
