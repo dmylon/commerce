@@ -9,7 +9,8 @@ The website allows the user to view active listings without having an account, w
 
 The signed in user could also add some of the active listings on a personal watchlist, in order to keep track of the auction procedure more easily. In addition, for easier navigation, the user is able to browse listings based on their category(four basic categories are included in the current version). 
 
-![Screenshot_12](https://user-images.githubusercontent.com/47897459/229382617-87187b86-3fb9-457b-b15b-934a814b3dff.png)
+
+![Screenshot_12](https://user-images.githubusercontent.com/47897459/229383014-68559dd3-2d35-4b5e-9047-8fcc6e846fed.png)
 
 
 If the user is interested about a product, they are able to view some details provided by the owner, as well as place a bid in order to compete against other interested users.
