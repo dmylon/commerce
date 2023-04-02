@@ -12,8 +12,10 @@ The signed in user could also add some of the active listings on a personal watc
 
 ![Screenshot_12](https://user-images.githubusercontent.com/47897459/229383014-68559dd3-2d35-4b5e-9047-8fcc6e846fed.png)
 
+![Screenshot_14](https://user-images.githubusercontent.com/47897459/229383111-93d27d8c-7a13-4075-864a-00c32aabae7f.png)
 
-If the user is interested about a product, they are able to view some details provided by the owner, as well as place a bid in order to compete against other interested users.
+
+If the user is interested about a product, they are able to view some details provided by the owner, as well as place a bid in order to compete against other interested users. Also, the user is able to post a comment about the product, or review the already existing comments made by other users.
 
 ![Screenshot_13](https://user-images.githubusercontent.com/47897459/229382828-ab97799e-c917-4049-b934-77d4ed93d297.png)
 
