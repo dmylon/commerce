@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Bid It!{% endblock %}</title>
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+        <link href="{% static 'auctions/styles.css' %}" type="text/css" rel="stylesheet">
+        {% block style %}{% endblock %}
+    </head>
+    <body>
+        <div id="header-container">
+            <a href="{% url 'index' %}"><img src="/media/uploads/logo.png" id="logo-img"/></a>
+            <div id="header-options">
+                <a href="{% url 'index' %}" class="menu-options">Active Listings</a>
+                <a href="{% url 'watchlist' %}" class="menu-options">Watchlist({{user.watchlist.count}})</a>
+                <a href="{% url 'categories' %}" class="menu-options">Categories</a>
+                <a href="{% url 'createlisting' %}" class="menu-options">Create Listing</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="menu-options">Log Out</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="menu-options">Log In</a>
+                    <a href="{% url 'register' %}" class="menu-options">Register</a>
+                {% endif %}
+            </div>
+        </div>
+        <div id="signed">
+            {% if user.is_authenticated %}
+                Signed in as&nbsp;<strong>{{ user.username }}</strong>.
+            {% else %}
+                Not signed in.
+            {% endif %}
+        </div>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %} Create Listing {% endblock %}
+
+{% block body %}
+    <div id="create-container">
+    <h2 class="form-texts" style="margin-top:-12vh;margin-left:17vw;">Create new Listing</h2>
+    <form action="{% url 'createlisting'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="form-texts">Title</div>
+            <input autofocus class="form-control" type="text" name="title" placeholder="Insert the name of the product" required>
+        </div>
+        <div class="form-group">
+            <div class="form-texts">Description</div>
+            <textarea class="form-control" name="description" placeholder="Enter some details about your product"></textarea>
+        </div>
+        <div class="form-group">
+            <div class="form-texts">Starting Price(EUR)</div>
+            <input class="form-control" type="number" name="price" placeholder="Define a starting price for the auction" step=".01" required>
+        </div>
+        <div class="form-group">
+            <div class="form-texts">Image(optional)</div>
+            <input class="form-control" style="width:25vw;"type="text" name="url" placeholder="Enter the image filename(e.g 'myimg.jpg')">
+            (make sure that the image is already saved in the project folder path 'auctions/media/myimg.jpg')
+        </div>
+        <div class="form-group">
+            <div class="form-texts">Category</div>
+            <select class="form-control" name="category" style="width:30vw;">
+                <option value="home">Home</option>
+                <option value="fashion">Fashion</option>
+                <option value="electronics">Electronics</option>
+                <option value="toys">Toys</option>
+            </select>
+        </div>
+        <input class="submit-btn" type="submit" value="Create Listing" style="margin-top:13vh">
+    </form>
+    </div>
+{% endblock %}

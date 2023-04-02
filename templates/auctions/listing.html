@@ -1,0 +1,83 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'auctions/listing.css' %}">
+{% endblock %}
+
+{% block body %}
+<div id="listing-container">
+    <img src="{{listing.photo.url}}" class="main_img">
+
+    <div id="info-container">
+    <h3 style="font-size:30px;margin-bottom:2vh;">{{listing.title}}</h3>
+    
+    {% if user.is_authenticated %}
+        <form action="{% url 'listingpage' listing.id %}" method="POST">
+            {% csrf_token %}
+            {% if add %}
+            <input type="submit" value="Add to watchlist" id="watchlist" style="width:10vw;height:4vh;background-color: blue;border-radius: 10px;">
+            <input type="hidden" name="add" value="">
+            {% else %}
+            <input type="submit" name="remove" value="Remove from watchlist" id="watchlist">
+            <input type="hidden" name="remove" value="">
+            {% endif %}
+        </form>
+    {% endif %}
+
+    {% if listing.bid_winner == user and listing.is_closed%}
+    <h3>Congratulations, your are the winner of the auction!</h3>
+    {% endif %}
+    <p>{{listing.description}}</p>
+    {% if not listing.is_closed and showClose %}
+    <form action="{% url 'listingpage' listing.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" name="close_bid" value="Close Auction" class="close-btn">
+    </form>
+    {% endif %}
+    <h3 style="font-size:20px;">EUR {{listing.price}}</h3>
+    <p>{{listing.bid}} bid(s) so far.</p>
+    <div id="bid-form-container">
+    {% if user.is_authenticated and not listing.is_closed %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input autofocus class="bid-box" type="number" name="bid_number" placeholder="Enter amount in EUR" step=".01" required>
+            </div>
+            <input type="submit" name="bid" value="Place Bid" class="bid-btn">
+        </form>
+        {{notification}}
+    {% endif %}
+    </div>
+   </div>
+   <h3 style="font-size:30px; margin-top:14vh;margin-bottom:20px;">Details:</h3>
+   <div id="details-container">
+    <div style="font-size:20px">Listed by: {{listing.owner.username}}</div>
+    <div style="font-size:20px;">Category: {{listing.category.capitalize}}</div>
+    </div>
+    <h3 style="font-size:30px">Comments:</h3>
+    {% for comment in listing.comments.all %}
+    <div class="comment">
+        <h4 style="font-size:20px;margin-bottom:-2vh;">{{comment.user.username}}</h4>
+        <h6 style="font-size:10px;margin-bottom:5vh;">{{comment.date.date}} {{comment.date.time}}</h6>
+        <p>{{comment.message}}</p>
+    </div>
+    {% endfor %}
+    <div class="add_comment">
+        <form action="{% url 'listingpage' listing.id %}" method="POST">
+            {% csrf_token %}
+            <h3 style="font-size:30px; margin-top:5vh">Add a Comment:</h3>
+            <div class="form-group">
+                <textarea class="form-control" name="message" placeholder="Enter a comment" style="width:72vw;padding-left:1vw;padding-top:1vh;;height:20vh"></textarea>
+            </div>
+            <input type="submit" name="add_comment" value="Post Comment" class="bid-btn" style="background-color: blue;width:15vw;margin-bottom:15vw;">
+        </form>
+    </div>
+</div>
+    <script>
+        if ( window.history.replaceState ) {
+          window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <div class="categories-container">
+    <h2 style="margin-left:45%;font-size:30px">Categories</h2>
+    <a  href="{% url 'category_listings' 'home' %}">
+        <img src="/media/uploads/home.png" class="category-img" style="margin-left: 23vw;"/>
+        <div id="home-text">Home</div>
+    </a>
+    <a  href="{% url 'category_listings' 'fashion' %}">
+        <img src="/media/uploads/fashion.png" class="category-img" style="margin-left: 53vw;margin-top:-11vh"/>
+        <div id="fashion-text">Fashion</div>
+    </a>
+    <a  href="{% url 'category_listings' 'electronics' %}">
+        <img src="/media/uploads/electronics.png" class="category-img" style="margin-left: 23vw;margin-top:23vh;"/>
+        <div id="electronics-text">Electronics</div>
+    </a>
+    <a  href="{% url 'category_listings' 'toys' %}">
+        <img src="/media/uploads/toys.png" class="category-img" style="margin-left: 53vw;margin-top:-10.5vh;"/>
+        <div id="toys-text">Toys</div>
+    </a>
+    </div>
+{% endblock %}

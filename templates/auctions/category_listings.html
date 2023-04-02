@@ -1,0 +1,22 @@
+{% extends "auctions/index.html"%}
+
+
+{% block body %}
+<div class="listings-container" style="width:85%;">
+{% block header %}<h2>"{{category.capitalize}}" Listings</h2>{% endblock %}
+{% block loop %}
+    {% for  listing in listings %}
+    <div class="container">
+        <a href="{% url 'listingpage' listing.id%}">
+        <div class="product-img"><img src="{{listing.photo.url}}" alt="{{listing.title}}.jpg" class="listing_image"></div>
+        <div class="info">
+            <div class="product-details" style="font-size:30px;font-weight:bold;">{{listing.title}}</div>
+            <div class="product-details" style="font-size:15px">{{listing.description}}</div>
+            <div class="product-details" style="font-size:30px;font-weight:bold;">EUR {{listing.price}}</div>
+        </div>
+    </a>
+    </div>
+    {% endfor %}
+{% endblock %}
+</div>
+{% endblock %}

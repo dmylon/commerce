@@ -1,0 +1,27 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="login-container">
+    <h2 style="margin-left:8vw;font-size:30px;">Sign In to Bid It!</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="username" placeholder="Username" style="width:30vw;">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password" style="width:30vw;">
+        </div>
+        {% if next %}
+            <input type="hidden" name="next" value="{{next}}">
+        {% endif %}
+        <input type="submit" value="Login" class="form-submit">
+    </form>
+
+    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+</div>
+{% endblock %}
