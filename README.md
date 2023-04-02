@@ -1,2 +1,2 @@
 # commerce
-An eBay-like e-commerce auction website
+### Project Description
